@@ -1,7 +1,8 @@
 function resolveApiBaseUrl() {
   const envUrl = import.meta.env.VITE_API_URL?.trim();
   if (envUrl) {
-    return envUrl.replace(/\/$/, '');
+    const cleaned = envUrl.replace(/\/$/, '');
+    return cleaned.endsWith('/api') ? cleaned : `${cleaned}/api`;
   }
   // In dev, use same-origin `/api` so Vite proxies to the backend (see vite.config.js).
   if (import.meta.env.DEV) {
