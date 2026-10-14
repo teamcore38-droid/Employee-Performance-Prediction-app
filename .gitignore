@@ -1,0 +1,26 @@
+# Dependencies
+**/node_modules/
+**/.venv/
+**/__pycache__/
+
+# Environment variables & secrets
+**/.env
+**/.env.local
+**/.env.*
+!**/.env.example
+!**/.env.sample
+**/*.pem
+**/*.key
+
+# Local databases & runtimes
+.local-data/
+.runtime/
+**/dist/
+*.zip
+
+# Expo & IDE
+**/.expo/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
