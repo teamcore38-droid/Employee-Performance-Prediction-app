@@ -140,6 +140,10 @@ export function deleteTechnician(id, token) {
   return request(`/technicians/${id}`, { method: 'DELETE', token });
 }
 
+export function predictTechnicians(data, token) {
+  return request('/technicians/predict', { method: 'POST', data, token });
+}
+
 // Payment API
 export function fetchPayments(token) {
   return request('/payments', { token });
