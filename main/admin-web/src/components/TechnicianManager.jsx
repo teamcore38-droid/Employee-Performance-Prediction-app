@@ -480,38 +480,39 @@ export default function TechnicianManager({ technicians = [], onCreate, onUpdate
                 Evaluating model across vehicle and service matrices…
               </div>
             ) : modalMatrix ? (
-              <table className="ai-matrix-table">
-                <thead>
-                  <tr>
-                    <th>Vehicle Type</th>
-                    <th>Interior Service</th>
-                    <th>Full Body Wash</th>
-                    <th>Body Wash & Vacuum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {['Car', 'Van', 'Cab'].map((v) => (
-                    <tr key={v}>
-                      <td style={{ fontWeight: '600' }}>{v === 'Car' ? '🚗 Car' : v === 'Van' ? '🚐 Van' : '🚖 Cab'}</td>
-                      {['Interior', 'Full Body', 'Body Wash'].map((s) => {
-                        const lvl = modalMatrix[v]?.[s] || 'MEDIUM';
-                        return (
-                          <td key={s}>
-                            <span
-                              className={`badge ${
-                                lvl === 'HIGH' ? 'badge-ai-high' : lvl === 'MEDIUM' ? 'badge-ai-medium' : 'badge-ai-low'
-                              }`}
-                              style={{ fontSize: '0.75rem' }}
-                            >
-                              {lvl}
-                            </span>
-                          </td>
-                        );
-                      })}
+              <div className="ai-matrix-wrapper">
+                <table className="ai-matrix-table">
+                  <thead>
+                    <tr>
+                      <th>Vehicle Type</th>
+                      <th>Interior Service</th>
+                      <th>Full Body Wash</th>
+                      <th>Body Wash & Vacuum</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {['Car', 'Van', 'Cab'].map((v) => (
+                      <tr key={v}>
+                        <td style={{ fontWeight: '600' }}>{v === 'Car' ? '🚗 Car' : v === 'Van' ? '🚐 Van' : '🚖 Cab'}</td>
+                        {['Interior', 'Full Body', 'Body Wash'].map((s) => {
+                          const lvl = modalMatrix[v]?.[s] || 'MEDIUM';
+                          return (
+                            <td key={s}>
+                              <span
+                                className={`badge ${
+                                  lvl === 'HIGH' ? 'badge-ai-high' : lvl === 'MEDIUM' ? 'badge-ai-medium' : 'badge-ai-low'
+                                }`}
+                              >
+                                {lvl}
+                              </span>
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             ) : null}
 
             <div style={{ marginTop: 20, textAlign: 'right' }}>
